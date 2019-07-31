@@ -83,7 +83,8 @@ namespace DicomAnony
             // Excel column을 값 길이에 맞게 정렬
             ws.Range[ws.Cells[1, 1], ws.Cells[header.Length, fInfos.Count + 1]].EntireColumn.AutoFit();
 
-            // Excel 파일을 저장
+            // Excel 파일을 저장. 파일을 덮어쓸 때 알림창에서 취소를 누르면 exception 발생하므로 error catch.
+            // 취소하면 저장하지 않고 그대로 종료한다.
             try
             {
                 wb.SaveAs("/Users/cskim/Desktop/Anonym.xlsx");
